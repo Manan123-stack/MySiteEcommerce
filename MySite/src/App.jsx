@@ -8,6 +8,18 @@ const App = () => {
 
   <Routes>
    <Route path=' '  element=""/>
+   <Route path=' '  element=""/>
+      <Route path=' '  element=""/>
+   <Route path=' '  element=""/>
+   <Route path=' '  element=""/>
+   <Route path=' '  element=""/>
+   <Route path=' '  element=""/>
+   <Route path=' '  element=""/>
+   <Route path=' '  element=""/>
+
+   
+
+
 
   </Routes>
 

@@ -379,7 +379,7 @@ export const products = [
         price: 210,
         image: [p_img24],
         category: "Kids",
-        subCategory: "Topwear",
+        subCategory: "Winterwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716637645448,
         bestseller: false

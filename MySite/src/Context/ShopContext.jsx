@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { products } from "../assets/frontend_assets/assets2";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
@@ -39,7 +39,9 @@ const ShopContextProvider = ({ children }) => {
             if (cartItems[item][items] > 0) {
               totalCount += cartItems[item][items];
             }
-          } catch (error) {}
+          } catch (error) {
+            console("Error calculating cart count:", error);
+          }
         }
       }
     }
@@ -62,7 +64,9 @@ const ShopContextProvider = ({ children }) => {
           if (cartItems[items][item] > 0) {
             totalAmount += itemInfo.price * cartItems[items][item];
           }
-        } catch (error) {}
+        } catch (error) {
+          console("Error calculating cart amount:", error);
+        }
       }
     }
     return totalAmount;

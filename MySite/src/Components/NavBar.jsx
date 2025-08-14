@@ -5,7 +5,14 @@ import { NavLink, Link } from "react-router";
 import { ShopContext } from "../Context/ShopContext";
 const NavBar = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch, getCartCount } = useContext(ShopContext);
+  const { setShowSearch, getCartCount,naviagte,token,setToken,setCartItems } = useContext(ShopContext);
+  const logout=()=>{
+    localStorage.removeItem('token')
+    setToken('')
+    setCartItems({})
+    naviagte('/login')
+  }
+  
   return (
     <>
       <div className="flex items-center justify-between py-5 font-medium ">
@@ -43,21 +50,23 @@ const NavBar = () => {
             className="w-5 cursor-pointer"
           />
           <div className="group relative">
-            <Link to={"/login"}>
               <img
+                onClick={()=> token ? null :naviagte('/login')}
                 src={assets2.profile_icon}
                 className="w-5 cursor-pointer"
                 alt=""
               />
-            </Link>
-            <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-              <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-                <p className="hover:text-black cursor-pointer">MyProfile</p>
-                <p className="hover:text-black cursor-pointer">Orders</p>
-                <p className="hover:text-black cursor-pointer">Logout</p>
+              {/*--------DropDown menu */}
+           { token &&
+               <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
+                <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
+                  <p className="hover:text-black cursor-pointer">MyProfile</p>
+                  <p  onClick={()=>naviagte('/order')} className="hover:text-black cursor-pointer">Orders</p>
+                  <p onClick={logout} className="hover:text-black cursor-pointer">Logout</p>
+                </div>
               </div>
-            </div>
-          </div>
+           }
+           </div>
           <Link to={"/cart"} className="relative">
             <img
               src={assets2.cart_icon}
@@ -123,7 +132,6 @@ const NavBar = () => {
         </div>
       </div>
     </>
-  );
-};
-
+  )
+  }
 export default NavBar;

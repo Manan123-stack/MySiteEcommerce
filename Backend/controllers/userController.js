@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const userModel =require('../models/userModel');
+const userModel =require('../models/userModel.js');
 
 const validator = require('validator');
 const bcrypt = require('bcrypt');
@@ -82,6 +82,7 @@ res.status(201).json({
 const adminLogin = async (req, res) => {
     try {
       const {email,password}=req.body
+console.log("From body:", req.body.email);
 
 console.log("From body:", email, password);
 console.log("From env:", process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);

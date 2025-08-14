@@ -8,6 +8,9 @@ const {connectCloudinary} = require('./config/cloudinary')
 const app=express();
 const port =process.env.PORT || 4000;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
 // Connection To MongoDb
 ConnectToMongoDb('mongodb://localhost:27017/MySiteEcommerce')
 .then (()=> console.log("Mongodb connected Successfully"))
@@ -20,6 +23,7 @@ app.use(express.json());
 app.use(cors());
 
 //Api endpoints
+app.use('/api/cart',require('./routes/cartRoute'))
 app.use('/api/user', require('./routes/userRoute'));
 app.use('/api/product', require('./routes/productRoute'));
 app.get('/', (req, res) => {

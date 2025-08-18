@@ -71,13 +71,13 @@ const usersOrders=async (req,res)=>{
 const updateStatus=async (req,res)=>{
       try {
           const {orderId,status}=req.body
-
+          console.log(orderId)
           await orderModel.findByIdAndUpdate(orderId,{status})
-           res.json({success:true,message:"Status Updated"})
+           res.json({success:true,message:"Status Updated" ,status})
         
       } catch (error) {
         console.log(error)
-    res.json({success:false,message:error.message})
+    res.json({success:false,message:error.message}) 
       }
 }
 

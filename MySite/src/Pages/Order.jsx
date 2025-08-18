@@ -30,6 +30,7 @@ const Order = () => {
               })
             })
             setOrderData(allOrdersItem.reverse())
+           
           }
           
       } catch (error) {
@@ -39,6 +40,7 @@ const Order = () => {
   }
   useEffect(()=>{
     loadOrderData()
+     console.log(orderData)
 
   },[token])
   

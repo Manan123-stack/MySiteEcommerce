@@ -86,7 +86,7 @@ const ShopContextProvider = ({ children }) => {
             totalAmount += itemInfo.price * cartItems[items][item];
           }
         } catch (error) {
-          console("Error calculating cart amount:", error);
+          console.log("Error calculating cart amount:", error);
         }
       }
     }

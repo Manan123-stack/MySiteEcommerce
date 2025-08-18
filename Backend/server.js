@@ -26,6 +26,8 @@ app.use(cors());
 app.use('/api/cart',require('./routes/cartRoute'))
 app.use('/api/user', require('./routes/userRoute'));
 app.use('/api/product', require('./routes/productRoute'));
+app.use('/api/order', require('./routes/orderRoute'));
+
 app.get('/', (req, res) => {
   res.send('Welcome to the API!');
 });

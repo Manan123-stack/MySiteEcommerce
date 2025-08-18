@@ -98,7 +98,7 @@ const ShopContextProvider = ({ children }) => {
        try {
           
           const response =await axios.get(backendUrl+"/api/product/list")
-          console.log(response.data.products)
+          
           if(response.data.success){
             setProducts(response.data.products)
           }else{
@@ -115,11 +115,10 @@ const ShopContextProvider = ({ children }) => {
    const getUserCart=async (passedToken)=>{
     try {
       const response=await axios.post(backendUrl+"/api/cart/get",{},{headers:{token:passedToken}})
-      console.log(response.data)
+      
       if(response.data.success){
         
         setCartItems(response.data.cartData)
-        console.log(response.data.cartData)
       }else{
         toast.error(response.data.message)
       }
@@ -140,7 +139,7 @@ const ShopContextProvider = ({ children }) => {
      if(!token && localStorage.getItem('token')){
       getUserCart(localStorage.getItem("token"))
       setToken(localStorage.getItem('token'))
-       console.log('hello')
+       
      }
    },[])
 

@@ -1,6 +1,6 @@
 const express=require('express')
 const orderRouter=express.Router()
-const { placedOrder,placedOrderStripe,placedOrderRazorpay,allOrders,usersOrders,updateStatus}=require('../controllers/orderController.js')
+const {verifyStripe,placedOrder,placedOrderStripe,placedOrderRazorpay,allOrders,usersOrders,updateStatus}=require('../controllers/orderController.js')
 const { adminAuth } = require('../middleware/adminAuth');
 const authUser= require('../middleware/auth.js')
 
@@ -15,6 +15,9 @@ orderRouter.post('/razorpay',authUser,placedOrderRazorpay)
 
 //user Feature
 orderRouter.post('/userorders',authUser,usersOrders)
+
+//verify Stripe
+orderRouter.post('/verifyStripe',authUser,verifyStripe)
 
 module.exports=orderRouter
 
